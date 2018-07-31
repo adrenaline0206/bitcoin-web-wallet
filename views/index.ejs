@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+    <body>
+        <p class="main-title"><%= title %></p>
+        <hr/>
+        <% if (typeof user !== 'undefined') { %>
+            <span class="login-user">Hello <%= user.user_name %> <%= user.user_id %>.</span>
+            Do you want <a href="/logout">Log out?</a>
+        <% }else{ %>
+            Do you want <a href="/login">Log in?</a>or <a href="/register">Sing up?</a>
+        <% } %>    
+    </body>
+</html>
