@@ -3,7 +3,7 @@ var router = express.Router();
 var connection = require('../mysqlConnection');
 
 //もしログインしている場合はログイン画面にアクセスすると
-//メイン画面にリダイレクトする
+//お財布画面にリダイレクトする
 router.get('/', function(req, res, next) {
   if (req.session.user_id) {
     res.redirect('/');

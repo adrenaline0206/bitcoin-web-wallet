@@ -10,8 +10,6 @@
 
     <body>
         <div class="wrapper">
-                or <a href="/register">Sign up?</a>
-               
             <p class="main-title"><%= title %></p>
             <hr/>
             <form action="/login" method="post" class="board-form">
@@ -25,12 +23,12 @@
                 <br>
                 <button type="submit" class="submit">Log in</button>
             </form>
+            <br>
+            <br>
+            or <a href="/register">Sign up?</a>
             <% if (typeof noUser !== 'undefined'){%>
                 <p class="error"><%= noUser %></p>
             <% } %>
-            <br>
-            <br>
-            <a href="/" class="btn">Back to top</a>
         </div>
     </body>
 </html>
