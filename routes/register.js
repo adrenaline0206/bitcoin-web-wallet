@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
     var createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
-    var privateKey = new bitcore.PrivateKey(network);
+    var privateKey = new bitcore.PrivateKey();
     var privatekey = privateKey.toString();
     var emailExistsQuery = 'SELECT * FROM users WHERE email = "' + email + '" LIMIT 1'; 
     var registerQuery = 'INSERT INTO users (user_name, email, password, created_at, private_key) VALUES ("' + userName + '", ' + '"' + email + '", ' + '"' + password + '", ' + '"' + createdAt + '", ' + '"' + privatekey + '")'; 

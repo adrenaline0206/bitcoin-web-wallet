@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bitcore-explorers": "^1.0.1",
     "bitcore-lib": "^0.15.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
