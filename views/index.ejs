@@ -14,18 +14,26 @@
         <p class="bitcoin-balance">Total Balance: <%= title3 %> BTC</p>
         <hr/>
 
-        <p class="main-title">Your Bitcoin address: </p> 
+        <p class="main-title">Bitcoin address: </p> 
         <p class="main-title"><%= title2 %></p>
         <div id="qrcode"></div>
 
         <script>
             jQuery('#qrcode').qrcode("<%= title2 %>");
         </script>
+        <hr/>
+        
+        <p class="main-title">Transaction:</p> 
+        <% for (var item of title4){ %>
+        <a href="https://www.blockchain.com/ja/btc/tx/<%= item %>" target="_blank"><%= item %></a>
+        <% } %> 
+
         <br>
         <br>
         <br>
-            <span class="login-user">Hello <%= user.user_name %>.</span>
-            Do you want <a href="/logout">Log out?</a>
+        <span class="login-user">Hello <%= user.user_name %>.</span>
+        <br>
+        Do you want <a href="/logout">Log out?</a>
                
     </body>
 </html>

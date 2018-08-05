@@ -18,9 +18,11 @@ router.get('/', function(req, res, next) {
       var address = privateKey.toAddress();
       var rows = address.toString();
       var insight = new explorers.Insight();
-      var address = '1DkDTVr98R5ZRqhFnMRXg9ntHRJHcodPNo';
+      var address = '1Pm3Px8qS4o64uriY7XZ6J9cfgJALS6yko';
+      
       //残高処理
       var total = 0;
+      var txid = [];
       insight.getUnspentUtxos(address, function(err, utxos){
         if(err){
           console.log("error");
@@ -28,20 +30,23 @@ router.get('/', function(req, res, next) {
           var balance = utxos.map(function(v){
             return{
               btc: (v.satoshis * 1e-8),
+              txid: v.txId,
             }
           })
           
           for(var i=0;i < balance.length;i++){
             total += parseFloat(balance[i].btc);
-            total = total.toFixed(8)
+            //total = total.toFixed(8)
+            txid.push(balance[i].txid);
           }
         }
-        //console.log(total);
+        
         //画面表示
         res.render('index', {
           title: 'Web Wallet',
           title2: rows,
-          title3: total
+          title3: total,
+          title4: txid
         });
       });
     });
