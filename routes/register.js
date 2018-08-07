@@ -11,8 +11,6 @@ router.get('/', function(req,res, next){
 });
 
 router.post('/', function(req, res, next) {
-    var network = 'testnet';
-
     var userName = req.body.user_name;
     var email = req.body.email;
     var password = req.body.password;
@@ -21,6 +19,7 @@ router.post('/', function(req, res, next) {
     var privatekey = privateKey.toString();
     var emailExistsQuery = 'SELECT * FROM users WHERE email = "' + email + '" LIMIT 1'; 
     var registerQuery = 'INSERT INTO users (user_name, email, password, created_at, private_key) VALUES ("' + userName + '", ' + '"' + email + '", ' + '"' + password + '", ' + '"' + createdAt + '", ' + '"' + privatekey + '")'; 
+    
     connection.query(emailExistsQuery, function(err, email) {
       var emailExists = email.length;
       if (emailExists) {

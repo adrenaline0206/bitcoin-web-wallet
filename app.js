@@ -12,6 +12,7 @@ var register = require('./routes/register');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var setUser = require('./setUser');
+var send = require('./routes/send');
 
 var app = express();
 var engine = require('ejs-locals');
@@ -41,6 +42,7 @@ app.use('/users', users);
 app.use('/register', register);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/send', send);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

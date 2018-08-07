@@ -2,15 +2,13 @@ var express = require('express');
 var router = express.Router();
 var connection = require('../mysqlConnection');
 var bitcore = require('bitcore-lib'); 
-
+var explorers = require('bitcore-explorers');
 
 router.get('/', function(req, res, next) {
   if (req.session.user_id ) {
     var userId = req.session.user_id;
     var query = 'SELECT private_key FROM users WHERE user_id = ' + userId;
-    //var network = 'testnet';
-    var explorers = require('bitcore-explorers');
-    
+   
 
     connection.query(query, function(err, rows) {
       var privatekey = rows[0].private_key;
@@ -18,7 +16,6 @@ router.get('/', function(req, res, next) {
       var address = privateKey.toAddress();
       var rows = address.toString();
       var insight = new explorers.Insight();
-      var address = '1Pm3Px8qS4o64uriY7XZ6J9cfgJALS6yko';
       
       //残高処理
       var total = 0;
@@ -36,7 +33,6 @@ router.get('/', function(req, res, next) {
           
           for(var i=0;i < balance.length;i++){
             total += parseFloat(balance[i].btc);
-            //total = total.toFixed(8)
             txid.push(balance[i].txid);
           }
         }
@@ -46,7 +42,7 @@ router.get('/', function(req, res, next) {
           title: 'Web Wallet',
           title2: rows,
           title3: total,
-          title4: txid
+          title4: txid,
         });
       });
     });
