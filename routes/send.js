@@ -9,7 +9,7 @@ var insight = new explorers.Insight();
 router.get('/', function(req, res, next) {
     res.redirect('/');
   });
-
+//hello
 router.post('/', function(req, res, next) {
     if (req.session.user_id ) {
         var userId = req.session.user_id;
