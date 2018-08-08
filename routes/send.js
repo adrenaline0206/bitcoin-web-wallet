@@ -23,13 +23,6 @@ router.post('/', function(req, res, next) {
             var sendAmount = Math.floor(parseFloat(req.body.send_amount)*100000000);
             var fee = parseFloat(req.body.fee);
 
-            // console.log(privateKey);
-            // console.log(privatekey);
-            // console.log(address);
-            // console.log(feeAddress);
-            // console.log(sendAddress);
-            // console.log(sendAmount);
-            // console.log(fee);
 
             
             
