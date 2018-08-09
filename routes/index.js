@@ -7,10 +7,9 @@ var explorers = require('bitcore-explorers');
 router.get('/', function(req, res, next) {
   if (req.session.user_id ) {
     var userId = req.session.user_id;
-    var query = 'SELECT private_key FROM users WHERE user_id = ' + userId;
+    var query = 'SELECT private_key FROM users WHERE user_id = ?';
    
-
-    connection.query(query, function(err, rows) {
+    connection.query(query,userId, function(err, rows) {
       var privatekey = rows[0].private_key;
       var privateKey = new bitcore.PrivateKey(privatekey);
       var address = privateKey.toAddress();
@@ -26,7 +25,7 @@ router.get('/', function(req, res, next) {
         }else{
           var balance = utxos.map(function(v){
             return{
-              btc: (v.satoshis * 1e-8),
+              btc: (v.satoshis * 1e-8).toFixed(8),
               txid: v.txId,
             }
           })

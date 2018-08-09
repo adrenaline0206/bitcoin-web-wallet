@@ -13,8 +13,8 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     if (req.session.user_id ) {
         var userId = req.session.user_id;
-        var query = 'SELECT private_key FROM users WHERE user_id = ' + userId;
-        connection.query(query, function(err, rows) {
+        var query = 'SELECT private_key FROM users WHERE user_id = ?';
+        connection.query(query,userId, function(err, rows) {
             var privateKey = rows[0].private_key;
             var privatekey = new bitcore.PrivateKey(privateKey);
             var address = privatekey.toAddress();

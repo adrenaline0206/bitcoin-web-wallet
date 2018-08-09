@@ -7,7 +7,6 @@ var logger = require('morgan');
 var session = require('express-session');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var register = require('./routes/register');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
@@ -37,7 +36,6 @@ app.use(session({
 }));
 
 app.use('/', setUser, routes);
-app.use('/users', users);
 
 app.use('/register', register);
 app.use('/login', login);
