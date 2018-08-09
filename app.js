@@ -1,21 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
 
-var session = require('express-session');
+let session = require('express-session');
 
-var routes = require('./routes/index');
-var register = require('./routes/register');
-var login = require('./routes/login');
-var logout = require('./routes/logout');
-var setUser = require('./setUser');
-var send = require('./routes/send');
+let routes = require('./routes/index');
+let register = require('./routes/register');
+let login = require('./routes/login');
+let logout = require('./routes/logout');
+let setUser = require('./setUser');
+let send = require('./routes/send');
 
-var app = express();
-var engine = require('ejs-locals');
-var path = require('path');
+let app = express();
+let engine = require('ejs-locals');
+
 
 app.engine('ejs', engine);
 app.set('views', path.join(__dirname, 'views'));

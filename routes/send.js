@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var connection = require('../mysqlConnection');
-var bitcore = require('bitcore-lib');
-var explorers = require('bitcore-explorers');
-var Transaction = bitcore.Transaction;
-var insight = new explorers.Insight();
+let express = require('express');
+let router = express.Router();
+let connection = require('../mysqlConnection');
+let bitcore = require('bitcore-lib');
+let explorers = require('bitcore-explorers');
+let Transaction = bitcore.Transaction;
+let insight = new explorers.Insight();
 
 router.get('/', function(req, res, next) {
     res.redirect('/');
@@ -12,16 +12,16 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     if (req.session.user_id ) {
-        var userId = req.session.user_id;
-        var query = 'SELECT private_key FROM users WHERE user_id = ?';
+        let userId = req.session.user_id;
+        let query = 'SELECT private_key FROM users WHERE user_id = ?';
         connection.query(query,userId, function(err, rows) {
-            var privateKey = rows[0].private_key;
-            var privatekey = new bitcore.PrivateKey(privateKey);
-            var address = privatekey.toAddress();
-            var feeAddress = address.toString();
-            var sendAddress = req.body.send_address;
-            var sendAmount = Math.floor(parseFloat(req.body.send_amount)*100000000);
-            var fee = parseFloat(req.body.fee);
+            let privateKey = rows[0].private_key;
+            let privatekey = new bitcore.PrivateKey(privateKey);
+            let address = privatekey.toAddress();
+            let feeAddress = address.toString();
+            let sendAddress = req.body.send_address;
+            let sendAmount = Math.floor(parseFloat(req.body.send_amount)*100000000);
+            let fee = parseFloat(req.body.fee);
 
 
             
@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
                     console.log('Bitcoin network connection error');
                 }else{
                     //console.log(JSON.stringify(utxos));
-                    var transaction = new Transaction()
+                    let transaction = new Transaction()
                     .fee(fee)
                     .from(utxos)
                     .to(sendAddress,sendAmount)

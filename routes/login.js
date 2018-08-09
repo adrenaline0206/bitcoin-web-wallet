@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var connection = require('../mysqlConnection');
-var bcrypt = require('bcrypt');
+let express = require('express');
+let router = express.Router();
+let connection = require('../mysqlConnection');
+let bcrypt = require('bcrypt');
 
 //もしログインしている場合はログイン画面にアクセスすると
 //お財布画面にリダイレクトする
@@ -17,16 +17,16 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/', function(req, res, next) {
-  var email = req.body.email;
-  var password = req.body.password;
+  let email = req.body.email;
+  let password = req.body.password;
   
-  var query = 'SELECT user_id,password FROM users WHERE email = ? LIMIT 1';
+  let query = 'SELECT user_id,password FROM users WHERE email = ? LIMIT 1';
   connection.query(query,email, function(err, rows) {
 
-    var hash = rows[0].password;
-    var hashs = bcrypt.compareSync(password, hash);
+    let hash = rows[0].password;
+    let hashs = bcrypt.compareSync(password, hash);
     if (hashs) {
-      var userId = rows[0].user_id;
+      let userId = rows[0].user_id;
       req.session.user_id = userId;
       res.redirect('/');
     } else {
