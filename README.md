@@ -12,9 +12,9 @@ bitcoreライブラリを使ったweb aplicationです。
 
 ②クローンしたリポジトリでnpm installを実行し、dependenciesに記載されたモジュールを全てインストールしてください
 
-※bitcore-expressモジュール内にあるbitcore-libフォルダ(bitcoinWebWallet→node_modules→bitcore-explorers→node_modules)をを削除して下さい。削除せずにアプリを起動すると以下のエラーが発生します。
+※bitcore-expressモジュール内にあるbitcore-libフォルダ(bitcoinWebWallet→node_modules→bitcore-explorers→node_modules)を削除して下さい。削除せずにアプリを起動すると以下のエラーが発生します。
 
-More than one instance of bitcore-lib found. Please make sure to require bitcore-lib and check that submodules do not also include their own bitcore-lib dependency.
+【エラーメッセージ】More than one instance of bitcore-lib found. Please make sure to require bitcore-lib and check that submodules do not also include their own bitcore-lib dependency.
 
 
 ③このWebアプリを起動する前にMySQLにデータベースとテーブルの作成が必要です。そのために、事前にinit.sqlを実行してください
