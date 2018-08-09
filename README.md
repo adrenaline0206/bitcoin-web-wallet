@@ -3,7 +3,7 @@ bitcoinWebWallet
 
 ## 概要
 
-bitcoreライブラリを使ったweb Aplicationです。
+bitcoreライブラリを使ったweb aplicationです。
 
 ## 始め方
 
