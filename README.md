@@ -19,11 +19,13 @@ bitcoreライブラリを使ったweb aplicationです。
 
 ③このWebアプリを起動する前にMySQLにデータベースとテーブルの作成が必要です。そのために、事前にinit.sqlを実行してください
 
-mysql -h <host> -u <user> -p < init.sql
+mysql -h <db host> -u <db user> -p <db name> < init.sql
 
 
 ④サーバーを起動する前に[mysqlConnection.js](https://github.com/adrenaline0206/bitcoinWebWallet/blob/master/mysqlConnection.js#L5)をご自身のDB設定に合わせて下さい
 
 
-⑤ブラウザでアクセスする際にはgoogle chromeでlocalhost:3000にアクセスしてください
+⑤npm startでサーバーを起動してください
 
+
+⑥ブラウザでアクセスする際にはgoogle chromeでlocalhost:3000にアクセスしてください
