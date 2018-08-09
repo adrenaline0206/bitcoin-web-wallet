@@ -22,7 +22,7 @@ bitcoreライブラリを使ったweb aplicationです。
 mysql -h <host> -u <user> -p < init.sql
 
 
-④サーバーを起動する前に[mysqlConnection.js](https://github.com/adrenaline0206/bitcoinWebWallet/blob/master/mysqlConnection.js#L5)をご自身のDB設定に合わせて下さい。
+④サーバーを起動する前に[mysqlConnection.js](https://github.com/adrenaline0206/bitcoinWebWallet/blob/master/mysqlConnection.js#L5)をご自身のDB設定に合わせて下さい
 
 
 ⑤ブラウザでアクセスする際にはgoogle chromeでlocalhost:3000にアクセスしてください
