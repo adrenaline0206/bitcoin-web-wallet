@@ -5,14 +5,14 @@ bitcoinWebWallet
 
 bitcoreライブラリを使ったweb aplicationです。
 
-## 始め方
+## 設定
 
 ①このリポジトリをクローンしてください
 
 
 ②クローンしたリポジトリでnpm installを実行し、dependenciesに記載されたモジュールを全てインストールしてください
 
-※bitcore-expressモジュール内にあるbitcore-libフォルダ(bitcoinWebWallet→node_modules→bitcore-explorers→node_modules)を削除して下さい。削除せずにアプリを起動すると以下のエラーが発生します。
+※bitcore-explorersモジュール内にあるbitcore-libフォルダ(bitcoinWebWallet→node_modules→bitcore-explorers→node_modules)を削除してください。削除しない場合、アプリを起動すると以下のエラーが発生します。
 
 【エラーメッセージ】More than one instance of bitcore-lib found. Please make sure to require bitcore-lib and check that submodules do not also include their own bitcore-lib dependency.
 
@@ -29,3 +29,8 @@ mysql -h <db host> -u <db user> -p <db name> < init.sql
 
 
 ⑥ブラウザでアクセスする際にはgoogle chromeでlocalhost:3000にアクセスしてください
+
+## 環境
+・node version V10.7.0
+・npm version 6.1.0
+・MySQL version 14.14 Distrib 5.7.23
