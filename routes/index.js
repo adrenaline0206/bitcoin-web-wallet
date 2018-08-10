@@ -3,6 +3,7 @@ let router = express.Router();
 let connection = require('../mysqlConnection');
 let bitcore = require('bitcore-lib'); 
 let explorers = require('bitcore-explorers');
+let bigdecimal = require('bignumber.js')
 
 router.get('/', function(req, res, next) {
   if (req.session.user_id ) {
@@ -15,28 +16,25 @@ router.get('/', function(req, res, next) {
       let address = privateKey.toAddress();
       let addressStr = address.toString();
       let insight = new explorers.Insight();
-      
-      //残高処理
       let total = 0;
       let txid = [];
+      
       insight.getUnspentUtxos(address, function(err, utxos){
         if(err){
           console.log("error");
         }else{
           let balance = utxos.map(function(v){
             return{
-              btc: (v.satoshis * 1e-8).toFixed(8),
+              btc: (v.satoshis * 1e-8),
               txid: v.txId,
             }
           })
           
           for(let i=0;i < balance.length;i++){
-            total += parseFloat(balance[i].btc);
+            total = new bigdecimal(parseFloat(balance[i].btc)).plus(total);
             txid.push(balance[i].txid);
-          }
+          } 
         }
-        
-        //画面表示
         res.render('index', {
           title: 'Web Wallet',
           title2: addressStr,
@@ -51,5 +49,3 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
-
- 

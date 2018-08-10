@@ -22,8 +22,13 @@ router.post('/', function(req, res, next) {
   
   let query = 'SELECT user_id,password FROM users WHERE email = ? LIMIT 1';
   connection.query(query,email, function(err, rows) {
-
-    let hash = rows[0].password;
+    if(rows.length === 0){
+      res.render('login', {
+        title: 'Sing in',
+        noUser: 'The email address and password are incorrect'
+      });
+    }else{
+      let hash = rows[0].password;
     let hashs = bcrypt.compareSync(password, hash);
     if (hashs) {
       let userId = rows[0].user_id;
@@ -35,6 +40,8 @@ router.post('/', function(req, res, next) {
         noUser: 'The email address and password are incorrect'
       });
     }
+    }
+    
   });
 });
 

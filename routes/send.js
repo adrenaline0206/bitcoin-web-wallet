@@ -23,14 +23,10 @@ router.post('/', function(req, res, next) {
             let sendAmount = Math.floor(parseFloat(req.body.send_amount)*100000000);
             let fee = parseFloat(req.body.fee);
 
-
-            
-            
             insight.getUnspentUtxos(feeAddress, function(err, utxos){
                 if(err){
                     console.log('Bitcoin network connection error');
                 }else{
-                    //console.log(JSON.stringify(utxos));
                     let transaction = new Transaction()
                     .fee(fee)
                     .from(utxos)
