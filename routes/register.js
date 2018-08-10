@@ -11,6 +11,7 @@ router.get('/', function(req,res, next){
     });
 });
 
+//Create a new account
 router.post('/', function(req, res, next) {
     let userName = req.body.user_name;
     let emails = req.body.email;

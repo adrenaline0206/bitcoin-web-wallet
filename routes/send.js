@@ -6,6 +6,7 @@ let explorers = require('bitcore-explorers');
 let Transaction = bitcore.Transaction;
 let insight = new explorers.Insight();
 
+//Can not access the send page directly
 router.get('/', function(req, res, next) {
     res.redirect('/');
   });
@@ -47,7 +48,7 @@ router.post('/', function(req, res, next) {
     }else{
         res.redirect('/login');   
     }
-    res.redirect('/');     
+    res.redirect('/login');     
 });
 
 module.exports = router;

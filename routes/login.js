@@ -3,8 +3,7 @@ let router = express.Router();
 let connection = require('../mysqlConnection');
 let bcrypt = require('bcrypt');
 
-//もしログインしている場合はログイン画面にアクセスすると
-//お財布画面にリダイレクトする
+//If logged in, redirect to wallet screen when access the login screen
 router.get('/', function(req, res, next) {
   if (req.session.user_id) {
     res.redirect('/');
@@ -14,7 +13,6 @@ router.get('/', function(req, res, next) {
     });
   }
 });
-
 
 router.post('/', function(req, res, next) {
   let email = req.body.email;
@@ -29,19 +27,19 @@ router.post('/', function(req, res, next) {
       });
     }else{
       let hash = rows[0].password;
-    let hashs = bcrypt.compareSync(password, hash);
-    if (hashs) {
-      let userId = rows[0].user_id;
-      req.session.user_id = userId;
-      res.redirect('/');
-    } else {
-      res.render('login', {
-        title: 'Sing in',
-        noUser: 'The email address and password are incorrect'
-      });
+      //Password is encrypted and saved
+      let hashs = bcrypt.compareSync(password, hash);
+      if (hashs) {
+        let userId = rows[0].user_id;
+        req.session.user_id = userId;
+        res.redirect('/');
+      } else {
+        res.render('login', {
+          title: 'Sing in',
+          noUser: 'The email address and password are incorrect'
+        });
+      }
     }
-    }
-    
   });
 });
 

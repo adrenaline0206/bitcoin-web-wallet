@@ -3,16 +3,13 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
-
 let session = require('express-session');
-
 let routes = require('./routes/index');
 let register = require('./routes/register');
 let login = require('./routes/login');
 let logout = require('./routes/logout');
 let setUser = require('./setUser');
 let send = require('./routes/send');
-
 let app = express();
 let engine = require('ejs-locals');
 
@@ -20,14 +17,11 @@ let engine = require('ejs-locals');
 app.engine('ejs', engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'keyboard cat',
@@ -36,7 +30,6 @@ app.use(session({
 }));
 
 app.use('/', setUser, routes);
-
 app.use('/register', register);
 app.use('/login', login);
 app.use('/logout', logout);
