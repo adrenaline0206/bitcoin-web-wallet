@@ -32,5 +32,7 @@ mysql -h <db host> -u <db user> -p <db name> < init.sql
 
 ## 環境
 ・node version V10.7.0
+
 ・npm version 6.1.0
+
 ・MySQL version 14.14 Distrib 5.7.23
