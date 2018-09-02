@@ -7,7 +7,7 @@ It is a web application using bitcore-lib.
 
 ## Setting
 
-①Please clone of bitcoinWebWallet repository.
+①Clone bitcoinWebWallet repository.
 
 
 ②Run npm install on the cloned repository and install all the modeles listed in dependencies.
@@ -26,10 +26,10 @@ mysql -h <db host> -u <db user> -p <db name> < init.sql
 ④Before starting the server, Please match [mysqlConnection.js](https://github.com/adrenaline0206/bitcoinWebWallet/blob/master/mysqlConnection.js#L5) with your own DB setting.
 
 
-⑤Please start the server at npm start.
+⑤Start the server at npm start.
 
 
-⑥Please access localhost: 3000 with google chrome when accessing with the browser.
+⑥Access localhost: 3000 with google chrome when accessing with the browser.
 
 ## Environment
 ・node version V10.7.0
