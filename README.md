@@ -1,36 +1,37 @@
 bitcoinWebWallet
 ====
 
-## 概要
+## Overview
 
-bitcore-libを使ったweb aplicationです。
+It is a web application using bitcore-lib.
 
-## 設定
+## Setting
 
-①このリポジトリをクローンしてください
-
-
-②クローンしたリポジトリでnpm installを実行し、dependenciesに記載されたモジュールを全てインストールしてください
-
-※bitcore-explorersモジュール内にあるbitcore-libフォルダ(bitcoinWebWallet→node_modules→bitcore-explorers→node_modules)を削除してください。削除しない場合、アプリを起動すると以下のエラーが発生します。
-
-【エラーメッセージ】More than one instance of bitcore-lib found. Please make sure to require bitcore-lib and check that submodules do not also include their own bitcore-lib dependency.
+①Please clone of bitcoinWebWallet repository.
 
 
-③このWebアプリを起動する前にMySQLにデータベースとテーブルの作成が必要です。そのために、事前にinit.sqlを実行してください
+②Run npm install on the cloned repository and install all the modeles listed in dependencies.
+
+※Delete the bitcore-lib folder in the bitcore-explorers module.(bitcoinWebWallet→node_modules→bitcore-explorers→node_modules)を
+If you do not delete, the following error will occur when launching the application.
+
+【Error message】More than one instance of bitcore-lib found. Please make sure to require bitcore-lib and check that submodules do not also include their own bitcore-lib dependency.
+
+
+③It is neccessary to create a database and tables in MySQL before launching this web application. For that, please execute "init.sql" in advance.
 
 mysql -h <db host> -u <db user> -p <db name> < init.sql
 
 
-④サーバーを起動する前に[mysqlConnection.js](https://github.com/adrenaline0206/bitcoinWebWallet/blob/master/mysqlConnection.js#L5)をご自身のDB設定に合わせて下さい
+④Before starting the server, Please match [mysqlConnection.js](https://github.com/adrenaline0206/bitcoinWebWallet/blob/master/mysqlConnection.js#L5) with your own DB setting.
 
 
-⑤npm startでサーバーを起動してください
+⑤Please start the server at npm start.
 
 
-⑥ブラウザでアクセスする際にはgoogle chromeでlocalhost:3000にアクセスしてください
+⑥Please access localhost: 3000 with google chrome when accessing with the browser.
 
-## 環境
+## Environment
 ・node version V10.7.0
 
 ・npm version 6.1.0
