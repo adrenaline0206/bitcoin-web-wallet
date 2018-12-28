@@ -1,0 +1,16 @@
+version: '2'
+services:
+    db:
+        image: mysql:5.7
+        ports:
+            - "3306:3306"
+        volumes:
+            # 初期データを投入するSQLが格納されているdir
+            - ./db/mysql_init:/docker-entrypoint-initdb.d
+            # 永続化するときにマウントするdir
+            - ./db/mysql_data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: mysql
+            MYSQL_USER: root
+            MYSQL_PASSWORD: mysql
+            MYSQL_DATABASE: bulletin_board
