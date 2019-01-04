@@ -26,6 +26,6 @@ $docker-compose up -d
 
 
 ## Environment
-・docker version:
+・docker version: 18.09.0
 
-・docker compose version:
+・docker compose version: 1.6.2
