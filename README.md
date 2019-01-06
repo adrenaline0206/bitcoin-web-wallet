@@ -27,4 +27,4 @@ Access localhost:80
 
 ## Caution
 
-This application use mainnet. However, this wallet is prototype, so security is not perfect. Please donot use a lot of Bitcoin. Even if you lose a Bitcoin by any chance, I'll not guarantee anything.
+This application use mainnet. However, this wallet is prototype, so security isn't perfect. Please don't use a lot of Bitcoins. Even if you lose Bitcoin by any chance, I'll not guarantee anything.
