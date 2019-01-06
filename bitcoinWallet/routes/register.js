@@ -12,7 +12,7 @@ router.get('/', function(req,res, next){
 });
 
 //Create a new account
-router.post('/', async function(req, res, next) {
+router.post('/', async function(req, res) {
     let userName = req.body.user_name;
     let emails = req.body.email;
     let password = req.body.password;
@@ -25,18 +25,26 @@ router.post('/', async function(req, res, next) {
     let emailExistsQuery = 'SELECT * FROM users WHERE email = ? LIMIT 1';
     let registerQuery = 'INSERT INTO users (user_name,email, password, created_at, private_key) VALUES(?,?,?,?,?);'
     connection.query(emailExistsQuery,emails, function(err, email) {
-      let emailExists = email.length;
-      if (emailExists) {
-        res.render('register', {
+      if (!err) {
+        let emailExists = email.length;
+        if (emailExists) {
+          res.render('register', {
           title: 'Sign up',
           emailExists: 'Already registered email address'
-        });
-      } else {
-        connection.query(registerQuery,[userName,emails,hash,createdAt,privatekey], function(err, rows) {
-        res.redirect('/login');
-        });
-      }
+          });
+        }else{
+          connection.query(registerQuery,[userName,emails,hash,createdAt,privatekey], function(err, rows) {
+            if (!err) {
+              res.redirect('/login');
+            }else{
+              console.log(err);
+            }
+          });
+        }
+      }else{
+        console.log(err);
+      }  
     });
-  });
+});
 
 module.exports = router;
