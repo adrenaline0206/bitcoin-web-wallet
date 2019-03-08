@@ -13,9 +13,9 @@
             <p class="main-title"><%= title %></p>
             <hr>
             <form action="/register" method="post" class="board-form">
-                <span class="label">User name:</span>
+                <span class="label">User name:(lower case)</span>
                 <br>
-                <input type="text" name="user_name" class="input" required><br>
+                <input type="text" pattern="^[0-9a-z]+$" name="user_name" class="input" required><br>
                 <br>
                 <span class="label">Email address:</span>
                 <br>

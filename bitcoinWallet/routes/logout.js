@@ -1,5 +1,5 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 //Discard the session to perform logout processing
 router.get('/', function(req, res, next) {

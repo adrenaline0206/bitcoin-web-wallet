@@ -1,17 +1,17 @@
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
-let session = require('express-session');
-let routes = require('./routes/index');
-let register = require('./routes/register');
-let login = require('./routes/login');
-let logout = require('./routes/logout');
-let setUser = require('./setUser');
-let send = require('./routes/send');
-let app = express();
-let engine = require('ejs-locals');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
+const routes = require('./routes/index');
+const register = require('./routes/register');
+const login = require('./routes/login');
+const logout = require('./routes/logout');
+const setUser = require('./setUser');
+const send = require('./routes/send');
+const app = express();
+const engine = require('ejs-locals');
 
 
 app.engine('ejs', engine);

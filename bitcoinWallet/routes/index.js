@@ -1,25 +1,35 @@
-var express = require('express');
-let router = express.Router();
-let connection = require('../mysqlConnection');
-let bitcore = require('bitcore-lib'); 
-let explorers = require('bitcore-explorers');
-let bigdecimal = require('bignumber.js')
+const express = require('express');
+const router = express.Router();
+const connection = require('../mysqlConnection');
+const bitcore = require('bitcore-lib'); 
+const explorers = require('bitcore-explorers');
+const bigdecimal = require('bignumber.js');
+const crypto = require('crypto');
+const network = "testnet";
 
 //Wallet main page processing
 router.get('/', function(req, res) {
   if (req.session.user_id ) {
-    let userId = req.session.user_id;
-    let query = 'SELECT private_key FROM users WHERE user_id = ?';
+    const userId = req.session.user_id;
+    const query = 'SELECT * FROM users WHERE user_id = ?';
    
     //Display of address and total balance
     connection.query(query,userId, function(err, rows) {
       if (!err) {
-        let privatekey = rows[0].private_key;
-        let privateKey = new bitcore.PrivateKey(privatekey);
-        //Address can be created only once.
-        let address = privateKey.toAddress();
-        let addressStr = address.toString();
-        let insight = new explorers.Insight();
+        const algorirhm = 'aes-256-cbc';
+        const salt = rows[0].user_name;
+        const password = rows[0].password;
+        const iterations = 1000;
+
+        //Decrypt private key with crypto and save it in the database
+        let privateKey = rows[0].private_key;
+        const decipher = crypto.createDecipher(algorirhm, crypto.pbkdf2Sync(password, salt, iterations, 32, 'sha256'));
+        const result = decipher.update(privateKey, 'base64', 'utf8');
+        privateKey = result + decipher.final('utf8');
+        const privatekey = new bitcore.PrivateKey(privateKey);
+        const address = privatekey.toAddress(network);
+        const addressStr = address.toString();
+        const insight = new explorers.Insight(network);
         let total = 0;
   
         insight.getUnspentUtxos(address, function(err, utxos){
