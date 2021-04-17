@@ -4,7 +4,7 @@ bitcoinWebWallet
 
 ## Overview
 
-This application is simple web application using bitcore-lib.
+This application was created to join Bitbank(simple web application using bitcore-lib).
 
 
 ## Setting
